@@ -1,0 +1,38 @@
+import sys
+from PyQt6.QtWidgets import QApplication
+from PyQt6.QtGui import QPalette, QColor
+from PyQt6.QtCore import Qt
+from gui.main_window import MainWindow
+from utils.logger import setup_logger
+
+def set_dark_theme(app: QApplication):
+    app.setStyle("Fusion")
+    dark_palette = QPalette()
+    dark_palette.setColor(QPalette.ColorRole.Window, QColor(53, 53, 53))
+    dark_palette.setColor(QPalette.ColorRole.WindowText, Qt.GlobalColor.white)
+    dark_palette.setColor(QPalette.ColorRole.Base, QColor(25, 25, 25))
+    dark_palette.setColor(QPalette.ColorRole.AlternateBase, QColor(53, 53, 53))
+    dark_palette.setColor(QPalette.ColorRole.ToolTipBase, Qt.GlobalColor.white)
+    dark_palette.setColor(QPalette.ColorRole.ToolTipText, Qt.GlobalColor.white)
+    dark_palette.setColor(QPalette.ColorRole.Text, Qt.GlobalColor.white)
+    dark_palette.setColor(QPalette.ColorRole.Button, QColor(53, 53, 53))
+    dark_palette.setColor(QPalette.ColorRole.ButtonText, Qt.GlobalColor.white)
+    dark_palette.setColor(QPalette.ColorRole.BrightText, Qt.GlobalColor.red)
+    dark_palette.setColor(QPalette.ColorRole.Link, QColor(127, 140, 141))
+    dark_palette.setColor(QPalette.ColorRole.Highlight, QColor(127, 140, 141))
+    dark_palette.setColor(QPalette.ColorRole.HighlightedText, Qt.GlobalColor.black)
+    app.setPalette(dark_palette)
+    
+def main():
+    setup_logger()
+    app = QApplication(sys.argv)
+    
+    # Optional: Apply dark theme for a modern professional look
+    set_dark_theme(app)
+    
+    window = MainWindow()
+    window.show()
+    sys.exit(app.exec())
+
+if __name__ == "__main__":
+    main()
